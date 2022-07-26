@@ -1,18 +1,20 @@
 AFRAME.registerComponent("car", {
     schema: {
-        moveX: {
+        rotate: {
             type: "number",
-            default: -1.5
+            default: 90
         }
     },
     tick: function() {
-        this.data.moveX += 0.01
-        var position = this.el.getAttribute("position");
-        position.x = this.data.moveX;
-        this.el.setAttribute("position", {
-            x: position.x,
-            y: position.y,
-            z: position.z
+        window.addEventListener("click", e => this.data.moveX += 0.01)
+        
+        this.data.rotate += 0.1
+        var rotation = this.el.getAttribute("rotation");
+        rotation.y = this.data.rotate;
+        this.el.setAttribute("rotation", {
+            x: rotation.x,
+            y: rotation.y,
+            z: rotation.z
         })
     }
-})
+});
